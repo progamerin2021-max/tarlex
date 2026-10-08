@@ -1,0 +1,6 @@
+{
+  "name": "TarleX - Next-Gen Social Media",
+  "description": "TarleX is a modern, mobile-first social media experience featuring dynamic feeds, interactive stories, immersive short reels, real-time messaging, creator profiles, and built-in AI creator assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
