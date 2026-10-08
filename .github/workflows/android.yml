@@ -13,12 +13,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Build web app
+        run: npm run build
+
+      - name: Sync Capacitor Android
+        run: npx cap sync android
+
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: "17"
+          java-version: "21"
           distribution: "temurin"
-          cache: gradle
+          cache: "gradle"
+
+      - name: Configure Gradle for Capacitor
+        run: |
+          sed -i "s/release {/debug { matchingFallbacks = ['release'] }\n        release {/g" android/app/build.gradle
 
       - name: Grant execute permission
         run: chmod +x android/gradlew
